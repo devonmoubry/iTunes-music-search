@@ -1,0 +1,58 @@
+body {
+  background-color: #60d9f1;
+  font-family: 'Raleway', sans-serif;
+}
+
+.page-title {
+  color: #36333a;
+  font-family: 'Amatic SC', cursive;
+  font-size: 4rem;
+  margin: 4rem 1rem;
+  text-align: center;
+}
+
+.player {
+  display: flex;
+  padding: 1rem;
+}
+
+.music-player {
+  flex-basis: 24rem;
+  flex-grow: 1;
+  font-family: 'Raleway', sans-serif;
+}
+
+.search {
+  text-align: center;
+  padding: 1rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-input {
+  font-family: 'Raleway', sans-serif;
+  padding: 1rem;
+  flex-basis: 80%;
+  flex-grow: 1;
+}
+
+#search-button {
+  background: #36333a;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  padding: 1rem;
+  border: 1px solid #36333a;
+  flex-basis: 20%;
+  flex-grow: 0;
+}
+
+.results {
+  margin: 0 1rem;
+}
+
+@media screen and (min-width: 375px) {
+
+}
