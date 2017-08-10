@@ -8,16 +8,16 @@ let searchForm =                  document.querySelector('.search-form');
 let searchInput =                 document.querySelector('.search-input');
 let searchButton =                document.querySelector('#search-button');
 let resultsContainer =            document.querySelector('.results');
-let searchValue =                 searchInput.value;
+let searchValue =                 '';
 let searchResultsHeading =        document.createElement('div');
 let searchResultsBody =           document.createElement('div');
-searchResultsMessage =            `<h4>Showing results for '${searchValue}'...</h1><hr>`;
 searchResultsHeading.setAttribute('class', 'results-heading');
 searchResultsBody.setAttribute('class', 'results-body');
-searchResultsHeading.innerHTML =  searchResultsMessage;
+
 
 // 2. Create your `submit` event for getting the user's search term
 searchForm.addEventListener('submit', (e) => {
+  searchValue = e.target[0].value;
   e.preventDefault();
   console.log('hello');
   console.log(searchValue);
@@ -37,27 +37,31 @@ searchForm.addEventListener('submit', (e) => {
           resultContainer += `
             <div class="result">
               <img src="${result.artworkUrl100}" alt="${result.trackName} picture" title="${result.previewUrl}">
-              <p>${result.trackName}</p>
-              <p>${result.artistName}</p>
+              <p class="song">${result.trackName}</p>
+              <p class="artist">${result.artistName}</p>
             </div>
           `
         }); // results.forEach()
+
+       searchResultsMessage = `<h4>Showing results for '${searchValue}'...</h1><hr>`;
+       searchResultsHeading.innerHTML =  searchResultsMessage;
        searchResultsBody.innerHTML = resultContainer;
        resultsContainer.append(searchResultsBody);
-        console.log(results);
       }); // response.json().then
     }) // .then()
+
     .catch(function(err) {
       console.log("Fetch Error :-S", err);
     }); // .catch()
 
   resultsContainer.append(searchResultsHeading);
 }); // searchForm.addEventListener()
+
 // 5. Create a way to listen for a click that will play the song in the audio play
 searchResultsBody.addEventListener('click', (e) => {
   e.preventDefault();
   let audioSource = document.getElementsByTagName('source');
-  let audio = document.querySelector('audio');
+  let audio =       document.querySelector('audio');
   audioSource[0].setAttribute('src', e.target.title);
   audio.load();
 }); // searchResultsBody.addEventListener()
